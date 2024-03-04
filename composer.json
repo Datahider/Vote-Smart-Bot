@@ -1,0 +1,22 @@
+{
+    "name": "losthost/patephon-bot",
+    "description": "Description of project Patephon Bot.",
+    "authors": [
+        {
+            "name": "drweb",
+            "email": "pio@pio.su"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "losthost/telle": "dev-master",
+        "losthost/bot-view": "^2",
+        "losthost/db": "^3",
+        "ramsey/uuid": "4.7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "losthost\\patephon\\": "src/"
+        }
+    }
+}

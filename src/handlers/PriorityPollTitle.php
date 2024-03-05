@@ -27,8 +27,9 @@ class PriorityPollTitle extends AbstractHandlerMessage {
             'admin' => Bot::$user->id, 
             'max_rating' => 5,
             'is_free_votes' => true,
-            'is_started' => false,
+            'stage' => 'created',
             'is_open' => true,
+            'can_block' => true,
         ], true);
         $poll->write();
         

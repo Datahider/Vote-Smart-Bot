@@ -6,6 +6,15 @@ use losthost\BotView\BotView;
 use losthost\telle\Bot;
 use losthost\patephon\data\poll;
 
+function __($string) {
+    $lang = Bot::$language_code == 'ru' ? 'default' : Bot::$language_code;
+    include "src/templates/$lang/__.php";
+    if (!empty($translations[$string])) {
+        return $translations[$string];
+    }
+    return $string;
+}
+
 function addName($name, $gender) {
     
     $name = new name(['name' => $name, 'gender' => $gender], true);

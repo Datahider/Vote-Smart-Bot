@@ -11,6 +11,9 @@ use losthost\patephon\handlers\CallbackCancel;
 use losthost\patephon\handlers\CallbackVote;
 use losthost\patephon\handlers\CallbackDelete;
 use losthost\patephon\handlers\CallbackRefresh;
+use losthost\patephon\handlers\CallbackToggle;
+use losthost\patephon\handlers\CallbackStage;
+use losthost\patephon\handlers\CallbackAdd;
 
 use losthost\patephon\handlers\InlineShare;
 
@@ -40,6 +43,9 @@ Bot::addHandler(CallbackCancel::class);
 Bot::addHandler(CallbackVote::class);
 Bot::addHandler(CallbackDelete::class);
 Bot::addHandler(CallbackRefresh::class);
+Bot::addHandler(CallbackToggle::class);
+Bot::addHandler(CallbackStage::class);
+Bot::addHandler(CallbackAdd::class);
 
 Bot::addHandler(InlineShare::class);
 

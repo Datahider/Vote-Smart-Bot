@@ -12,6 +12,7 @@ if ($poll->stage != 'end') {
 }
 
 $line1[] = ['text' => '️🧠', 'callback_data' => "toggle_free_votes_$poll->id"];
+$line1[] = ['text' => '🔏', 'callback_data' => "toggle_can_block_$poll->id"];
 $line1[] = ['text' => '🗑️', 'callback_data' => "delete_$poll->id"];
 
 $keyboard_array = [
@@ -21,10 +22,11 @@ $keyboard_array = [
 
 
 if ($selected) {
-    $keyboard_array[] = [
-        ['text' => '✖️ Без оценки', 'callback_data' => "vote_0_$selected"],
-        ['text' => '⛔️ Вето', 'callback_data' => "vote_never_$selected"],
-    ];
+    $line2 = [['text' => '✖️ Без оценки', 'callback_data' => "vote_0_$selected"]];
+    if ($poll->can_block) {
+        $line2[] = ['text' => '⛔️ Вето', 'callback_data' => "vote_never_$selected"];
+    }
+    $keyboard_array[] = $line2;
     $keyboard_array[] = [
         ['text' => '🤔 (1)', 'callback_data' => "vote_1_$selected"],
         ['text' => '👌 (2)', 'callback_data' => "vote_2_$selected"],

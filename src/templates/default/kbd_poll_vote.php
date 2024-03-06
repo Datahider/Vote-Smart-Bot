@@ -11,10 +11,11 @@ $keyboard_array[] = $line1;
 
 
 if ($selected) {
-    $keyboard_array[] = [
-        ['text' => '✖️ Без оценки', 'callback_data' => "vote_0_$selected"],
-        ['text' => '⛔️ Вето', 'callback_data' => "vote_never_$selected"],
-    ];
+    $line2 = [['text' => '✖️ Без оценки', 'callback_data' => "vote_0_$selected"]];
+    if ($poll->can_block) {
+        $line2[] = ['text' => '⛔️ Вето', 'callback_data' => "vote_never_$selected"];
+    }
+    $keyboard_array[] = $line2;
     $keyboard_array[] = [
         ['text' => '🤔 (1)', 'callback_data' => "vote_1_$selected"],
         ['text' => '👌 (2)', 'callback_data' => "vote_2_$selected"],

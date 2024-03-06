@@ -12,7 +12,7 @@ use losthost\DB\DBList;
 class CommandMyPolls extends AbstractHandlerMessage {
     
     protected function check(\TelegramBot\Api\Types\Message &$message): bool {
-        if ($message->getText() && preg_match("/^\/mypolls$/i", $message->getText())) {
+        if (Bot::$chat->id == Bot::$user->id && $message->getText() && preg_match("/^\/mypolls$/i", $message->getText())) {
             return true;
         }
         return false;

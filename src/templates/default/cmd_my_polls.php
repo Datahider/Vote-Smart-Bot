@@ -2,7 +2,7 @@
 
 if (count($polls)) {
 
-    echo "<b>Ваши голосования</b>\n\n";
+    echo "<b>Ваши опросы</b>\n\n";
 
     foreach ($polls as $poll) {
         echo "/$poll->id. - $poll->title\n";

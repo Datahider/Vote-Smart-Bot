@@ -30,6 +30,11 @@ class CallbackToggle extends AbstractHandlerCallback {
                 $poll->write();
                 showPoll($poll->id, null, $callback_query->getMessage()->getMessageId());
             }
+        } elseif (preg_match("/^toggle_can_block_(\d+)$/", $data, $m)) {
+            $poll = new poll(['id' => $m[1]]);
+            $poll->can_block = !$poll->can_block;
+            $poll->write();
+            showPoll($poll->id, null, $callback_query->getMessage()->getMessageId());
         }
         
         try { Bot::$api->answerCallbackQuery($callback_query->getId(), $err, true); } catch (\Exception $e) {}

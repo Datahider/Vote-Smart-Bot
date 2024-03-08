@@ -34,7 +34,7 @@ class PriorityPollItems extends AbstractHandlerMessage {
         showPoll($poll_id, null, $poll_message_id);
         
         self::unsetPriority();
-        
+        queueInlineUpdates($poll_id);
         return true;
     }
 }

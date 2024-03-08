@@ -8,6 +8,7 @@ use TelegramBot\Api\Types\Inline\QueryResult\Article;
 use TelegramBot\Api\Types\Inline\InputMessageContent\Text;
 use losthost\DB\DBList;
 use losthost\patephon\data\poll;
+use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 
 class InlineShare extends AbstractHandlerInlineQuery {
     
@@ -31,10 +32,19 @@ class InlineShare extends AbstractHandlerInlineQuery {
         
         $results = [];
         while ($poll = $poll_list->next()) {
-            $results[] = new Article($poll->id, $poll->title, $poll->id, null, null, null, new Text("Приглашаю вас принять участие в голосовании на тему <a href='t.me/votesmart_bot?start=$poll->id'>$poll->title</a>", 'HTML'));
+            $results[] = new Article(
+                $poll->id, 
+                $poll->title, 
+                getPollDescription($poll), 
+                null, null, null, new 
+                Text(getPollSharingText($poll), 'HTML'), 
+                new InlineKeyboardMarkup([
+                    [['text' => __('Take a part'), 'url' => "t.me/votesmart_bot?start=$poll->id"]]
+                ])
+            );
         }
             
-        Bot::$api->answerInlineQuery($inline_query->getId(), $results);
+        Bot::$api->answerInlineQuery($inline_query->getId(), $results, 10, true, '', __('Create poll/brainstorm'), 'newpoll');
         return true;
     }
 }

@@ -25,6 +25,7 @@ class PriorityPollTitle extends AbstractHandlerMessage {
         $poll = new poll([
             'title' => $message->getText(), 
             'admin' => Bot::$user->id, 
+            'language_code' => Bot::$language_code,
             'max_rating' => 5,
             'is_free_votes' => true,
             'stage' => 'created',

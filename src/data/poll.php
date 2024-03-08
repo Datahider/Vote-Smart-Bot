@@ -13,6 +13,7 @@ class poll extends DBObject {
         'id' => 'BIGINT NOT NULL AUTO_INCREMENT',
         'title' => 'VARCHAR(64) NOT NULL',
         'admin' => 'BIGINT NOT NULL',
+        'language_code' => 'VARCHAR(10) NOT NULL DEFAULT "ru"',
         'max_rating' => 'INT NOT NULL',
         'is_free_votes' => 'TINYINT(1) NOT NULL',
         'stage' => 'ENUM("created", "ideas", "voting", "end") DEFAULT "created"',

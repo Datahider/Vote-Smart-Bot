@@ -16,11 +16,14 @@ use losthost\patephon\handlers\CallbackStage;
 use losthost\patephon\handlers\CallbackAdd;
 
 use losthost\patephon\handlers\InlineShare;
+use losthost\patephon\handlers\InlineResult;
 
 use losthost\BotView\BotView;
 use losthost\patephon\data\poll;
 use losthost\patephon\data\poll_item;
 use losthost\patephon\data\poll_vote;
+use losthost\patephon\data\poll_user;
+use losthost\patephon\data\inline_message;
 
 require_once 'vendor/autoload.php';
 require_once 'src/functions.php';
@@ -30,6 +33,8 @@ Bot::setup();
 poll::initDataStructure();
 poll_item::initDataStructure();
 poll_vote::initDataStructure();
+poll_user::initDataStructure();
+inline_message::initDataStructure();
 
 BotView::setTemplateDir('src/templates');
 
@@ -48,6 +53,7 @@ Bot::addHandler(CallbackStage::class);
 Bot::addHandler(CallbackAdd::class);
 
 Bot::addHandler(InlineShare::class);
+Bot::addHandler(InlineResult::class);
 
 Bot::run();
 

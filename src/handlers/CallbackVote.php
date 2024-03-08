@@ -44,6 +44,7 @@ class CallbackVote extends AbstractHandlerCallback {
             $this->normalizeVotes($poll, $poll_vote);
             
             showPoll($poll->id, $poll_item->id, $callback_query->getMessage()->getMessageId());
+            queueInlineUpdates($poll->id);
         }
         
         try { Bot::$api->answerCallbackQuery($callback_query->getId()); } catch (\Exception $e) {}

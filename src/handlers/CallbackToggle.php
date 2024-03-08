@@ -35,6 +35,7 @@ class CallbackToggle extends AbstractHandlerCallback {
             $poll->can_block = !$poll->can_block;
             $poll->write();
             showPoll($poll->id, null, $callback_query->getMessage()->getMessageId());
+            queueInlineUpdates($poll->id);
         }
         
         try { Bot::$api->answerCallbackQuery($callback_query->getId(), $err, true); } catch (\Exception $e) {}

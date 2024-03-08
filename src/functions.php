@@ -5,10 +5,19 @@ use losthost\DB\DBView;
 use losthost\BotView\BotView;
 use losthost\telle\Bot;
 use losthost\patephon\data\poll;
+use losthost\templateHelper\Template;
+use losthost\DB\DB;
+use losthost\telle\model\DBPendingJob;
+use losthost\patephon\service\InlineUpdater;
 
-function __($string) {
-    $lang = Bot::$language_code == 'ru' ? 'default' : Bot::$language_code;
-    include "src/templates/$lang/__.php";
+function __($string, $language_code=null) {
+    if (is_null($language_code)) { 
+        $language_code = Bot::$language_code == 'ru' ? 'default' : Bot::$language_code;
+    } elseif ($language_code == 'ru') {
+        $language_code = 'default';
+    }
+    
+    include "src/templates/$language_code/__.php";
     if (!empty($translations[$string])) {
         return $translations[$string];
     }
@@ -34,13 +43,13 @@ function showPoll($poll_id, $item_id, $message_id=null) {
     if ($poll->isNew()) {
         $view->show('err_no_poll');
     } elseif ($poll->admin == Bot::$user->id) {
-        $poll_results = getPollResults($poll);
+        $poll_results = getPollResults($poll, Bot::$user->id);
         if (!$message_id) {
             $message_id = $view->show('tpl_poll_settings', 'kbd_poll_settings', ['poll' => $poll, 'poll_results' => $poll_results, 'selected' => $item_id, 'message_id' => 0]);
         }
         $view->show('tpl_poll_settings', 'kbd_poll_settings', ['poll' => $poll, 'poll_results' => $poll_results, 'selected' => $item_id, 'message_id' => $message_id], $message_id);
     } elseif ($poll->isVoteAllowed(Bot::$user->id)) {
-        $poll_results = getPollResults($poll);
+        $poll_results = getPollResults($poll, Bot::$user->id);
         if (!$message_id) {
             $message_id = $view->show('tpl_poll_vote', 'kbd_poll_vote', ['poll' => $poll, 'poll_results' => $poll_results, 'selected' => $item_id, 'message_id' => 0]);
         }    
@@ -50,7 +59,7 @@ function showPoll($poll_id, $item_id, $message_id=null) {
     }
 }
 
-function getPollResults($poll) {
+function getPollResults($poll, $user_id) {
 
     $results = new DBView(<<<FIN
         SELECT 
@@ -75,7 +84,7 @@ function getPollResults($poll) {
             icon, title, id
         ORDER BY 
             rating DESC
-        FIN, ['poll' => $poll->id, 'tg_user' => Bot::$user->id]); 
+        FIN, ['poll' => $poll->id, 'tg_user' => $user_id]); 
 
     $poll_results = [];
     while ($results->next()) {
@@ -88,4 +97,26 @@ function getPollResults($poll) {
     }
 
     return $poll_results;
+}
+
+function getPollDescription($poll) {
+    $tpl = new Template('func_poll_description.php', Bot::$language_code);
+    $tpl->setTemplateDir('src/templates');
+    $tpl->assign('poll', $poll);
+    return $tpl->process();
+}
+
+function getPollSharingText($poll) {
+    $tpl = new Template('func_poll_sharing_text.php', $poll->language_code);
+    $tpl->setTemplateDir('src/templates');
+    $tpl->assign('poll', $poll);
+    $tpl->assign('poll_results', getPollResults($poll, 0));
+    return $tpl->process();
+}
+
+function queueInlineUpdates($poll_id) {
+    $sql = "UPDATE [inline_message] SET needs_update = 1 WHERE poll = ?";
+    $sth = DB::prepare($sql);
+    $sth->execute([$poll_id]);
+    Bot::runAt(date_create_immutable(), InlineUpdater::class, '', false);
 }

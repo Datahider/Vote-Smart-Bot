@@ -31,6 +31,7 @@ class CallbackStage extends AbstractHandlerCallback {
             }
             $poll->write();
             showPoll($poll->id, null, $callback_query->getMessage()->getMessageId());
+            queueInlineUpdates($poll->id);
         } elseif (preg_match("/^stage_prev_(\d+)/", $data, $m)) {
             $poll = new poll(['id' => $m[1]]);
             if ($poll->stage == 'voting' && $poll->is_free_votes) {
@@ -42,6 +43,7 @@ class CallbackStage extends AbstractHandlerCallback {
             }
             $poll->write();
             showPoll($poll->id, null, $callback_query->getMessage()->getMessageId());
+            queueInlineUpdates($poll->id);
         }
 
         try { Bot::$api->answerCallbackQuery($callback_query->getId()); } catch (\Exception $e) {}

@@ -19,8 +19,12 @@ class PriorityPollTitle extends AbstractHandlerMessage {
 
     protected function handle(\TelegramBot\Api\Types\Message &$message): bool {
         if (preg_match("/^\//", $message->getText())) {
-            self::unsetPriority();
-            return false;
+            if (canProcessCommand()) {
+                self::unsetPriority();
+                return false;
+            } else {
+                return true;
+            }
         }
         
         $poll = new poll([

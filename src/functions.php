@@ -136,12 +136,9 @@ function queueInlineUpdates($poll_id) {
 
 function canProcessCommand() {
     $user = new user(['tg_user' => Bot::$user->id], true);
-    error_log($user->last_command_timestamp. '; '. time(). ';');
     if ($user->isNew() || is_null($user->last_command_timestamp) || $user->last_command_timestamp < time()-1) {
-        error_log('Can');
         return true;
     }
-    error_log('Can not');
     return false;
 }
 

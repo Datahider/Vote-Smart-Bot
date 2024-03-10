@@ -35,7 +35,6 @@ class InlineShare extends AbstractHandlerInlineQuery {
         
         while ($poll = $poll_list->next()) {
             $poll_link = $poll->getLink();
-            error_log($poll_link);
             
             $results[] = new Article(
                 $poll->id, 

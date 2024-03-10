@@ -45,8 +45,9 @@ class InlineUpdater extends AbstractBackgroundProcess {
             }
 
             $text = getPollSharingText($poll);
+            $poll_link = $poll->getLink();
             $keyboard = new InlineKeyboardMarkup([
-                [['text' => __('Take a part', $poll->language_code), 'url' => "t.me/$bot_username?start=$poll->id"]]
+                [['text' => __('Take a part', $poll->language_code), 'url' => "t.me/$bot_username?start=$poll_link"]]
             ]);
 
             try {

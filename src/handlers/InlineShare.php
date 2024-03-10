@@ -34,6 +34,9 @@ class InlineShare extends AbstractHandlerInlineQuery {
         $bot_username = Bot::param("bot_username", null);
         
         while ($poll = $poll_list->next()) {
+            $poll_link = $poll->getLink();
+            error_log($poll_link);
+            
             $results[] = new Article(
                 $poll->id, 
                 $poll->title, 
@@ -41,7 +44,7 @@ class InlineShare extends AbstractHandlerInlineQuery {
                 null, null, null, new 
                 Text(getPollSharingText($poll), 'HTML'), 
                 new InlineKeyboardMarkup([
-                    [['text' => __('Take a part'), 'url' => "t.me/$bot_username?start=". $poll->getLink()]]
+                    [['text' => __('Take a part'), 'url' => "t.me/$bot_username?start=$poll_link"]]
                 ])
             );
         }

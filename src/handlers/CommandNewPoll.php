@@ -13,6 +13,9 @@ class CommandNewPoll extends AbstractHandlerMessage {
         if (Bot::$chat->id == Bot::$user->id && $message->getText() && preg_match("/\/newpoll/i", $message->getText())) {
             return true;
         }
+        if (Bot::$chat->id == Bot::$user->id && $message->getText() && preg_match("/\/start newpoll/i", $message->getText())) {
+            return true;
+        }
         return false;
     }
 

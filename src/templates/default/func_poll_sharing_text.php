@@ -6,8 +6,9 @@ if (empty($poll_results)) {
 } else {
     $results_text = '';
     foreach ($poll_results as $result) {
+        $rating = $result['rating'] < 0 ? '🚫' : $result['rating'];
         if ($poll->stage == 'voting' || $poll->stage == 'end') {
-            $results_text .= "$result[icon] - $result[title] [$result[rating]]\n";
+            $results_text .= "$result[icon] - $result[title] [$rating]\n";
         } elseif ($poll->stage == 'ideas') {
             $results_text .= "$result[icon] - $result[title]\n";
         }

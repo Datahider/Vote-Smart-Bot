@@ -13,7 +13,7 @@ use losthost\patephon\data\poll_item;
 class GeneralMessage extends AbstractHandlerMessage {
     
     protected function check(\TelegramBot\Api\Types\Message &$message): bool {
-        if (Bot::$user->id <> Bot::$chat->id || !$message->getText()) {
+        if (Bot::$user->id <> Bot::$chat->id || !$message->getText() || substr($message->getText(), 0, 1) == '/') {
             return false;
         }
         return true;

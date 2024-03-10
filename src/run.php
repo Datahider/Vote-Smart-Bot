@@ -7,6 +7,7 @@ use losthost\patephon\handlers\CommandStartLink;
 use losthost\patephon\handlers\CommandNewPoll;
 use losthost\patephon\handlers\CommandMyPolls;
 use losthost\patephon\handlers\CommandPollId;
+use losthost\patephon\handlers\GeneralMessage;
 
 use losthost\patephon\handlers\CallbackCancel;
 use losthost\patephon\handlers\CallbackVote;
@@ -51,6 +52,7 @@ Bot::addHandler(CommandStartLink::class);
 Bot::addHandler(CommandNewPoll::class);
 Bot::addHandler(CommandMyPolls::class);
 Bot::addHandler(CommandPollId::class);
+Bot::addHandler(GeneralMessage::class);
 
 Bot::addHandler(CallbackCancel::class);
 Bot::addHandler(CallbackVote::class);
@@ -68,6 +70,12 @@ $bot_username = new DBBotParam('bot_username');
 $bot_username->value = $me->getUsername();
 if ($bot_username->isModified()) {
     $bot_username->write();
+}
+
+$cron_sleep_time = new DBBotParam('cron_sleep_time', 1);
+$cron_sleep_time->value = 1;
+if ($cron_sleep_time->isModified()) {
+    $cron_sleep_time->write();
 }
 
 Bot::run();

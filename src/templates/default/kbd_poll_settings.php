@@ -17,7 +17,7 @@ $line1[] = ['text' => '🗑️', 'callback_data' => "delete_$poll->id"];
 
 $keyboard_array = [
     $line1,
-    [['text' => '🔄 Обновить', 'callback_data' => "refresh_$poll->id"], ['text' => '➕ Добавить', 'callback_data' => "add_$poll->id"]],
+    [['text' => '🔄 Обновить', 'callback_data' => "refresh_$poll->id"]],
 ];
 
 

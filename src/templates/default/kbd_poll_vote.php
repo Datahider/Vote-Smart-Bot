@@ -4,11 +4,7 @@ use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 
 $line1 = [['text' => '🔄 Обновить', 'callback_data' => "refresh_$poll->id"]];
 
-if ($poll->stage == 'ideas') {
-    $line1[] = ['text' => '➕ Добавить', 'callback_data' => "add_$poll->id"];
-} 
 $keyboard_array[] = $line1;
-
 
 if ($selected) {
     $line2 = [['text' => '✖️ Без оценки', 'callback_data' => "vote_0_$selected"]];

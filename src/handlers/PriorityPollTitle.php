@@ -6,6 +6,7 @@ use losthost\telle\abst\AbstractHandlerMessage;
 use losthost\patephon\data\poll;
 use losthost\BotView\BotView;
 use losthost\telle\Bot;
+use losthost\passg\Pass;
 
 class PriorityPollTitle extends AbstractHandlerMessage {
     
@@ -25,6 +26,7 @@ class PriorityPollTitle extends AbstractHandlerMessage {
         $poll = new poll([
             'title' => $message->getText(), 
             'admin' => Bot::$user->id, 
+            'secret' => Pass::generate(32),
             'language_code' => Bot::$language_code,
             'max_rating' => 5,
             'is_free_votes' => true,
@@ -34,10 +36,8 @@ class PriorityPollTitle extends AbstractHandlerMessage {
         ], true);
         $poll->write();
         
-        $view = new BotView(Bot::$api, Bot::$chat->id, Bot::$language_code);
-        $view->show('tpl_poll_settings', 'kbd_poll_settings', ['poll' => $poll, 'poll_results' => []]);
-        
-        
+        showPoll($poll->id, null);
+        self::unsetPriority();
         return true;
     }
 }

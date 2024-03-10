@@ -9,6 +9,7 @@ use losthost\templateHelper\Template;
 use losthost\DB\DB;
 use losthost\telle\model\DBPendingJob;
 use losthost\patephon\service\InlineUpdater;
+use losthost\patephon\data\user;
 
 function __($string, $language_code=null) {
     if (is_null($language_code)) { 
@@ -46,12 +47,24 @@ function showPoll($poll_id, $item_id, $message_id=null) {
         $poll_results = getPollResults($poll, Bot::$user->id);
         if (!$message_id) {
             $message_id = $view->show('tpl_poll_settings', 'kbd_poll_settings', ['poll' => $poll, 'poll_results' => $poll_results, 'selected' => $item_id, 'message_id' => 0]);
+            $user = new user(['tg_user' => Bot::$user->id], true);
+            if ($user->tg_user) {
+                $user->last_poll = $poll->id;
+                $user->last_poll_message = $message_id;
+                $user->write();
+            }
         }
         $view->show('tpl_poll_settings', 'kbd_poll_settings', ['poll' => $poll, 'poll_results' => $poll_results, 'selected' => $item_id, 'message_id' => $message_id], $message_id);
     } elseif ($poll->isVoteAllowed(Bot::$user->id)) {
         $poll_results = getPollResults($poll, Bot::$user->id);
         if (!$message_id) {
             $message_id = $view->show('tpl_poll_vote', 'kbd_poll_vote', ['poll' => $poll, 'poll_results' => $poll_results, 'selected' => $item_id, 'message_id' => 0]);
+            $user = new user(['tg_user' => Bot::$user->id], true);
+            if ($user->tg_user) {
+                $user->last_poll = $poll->id;
+                $user->last_poll_message = $message_id;
+                $user->write();
+            }
         }    
         $view->show('tpl_poll_vote', 'kbd_poll_vote', ['poll' => $poll, 'poll_results' => $poll_results, 'selected' => $item_id, 'message_id' => $message_id], $message_id);
     } else {

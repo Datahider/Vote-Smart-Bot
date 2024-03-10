@@ -18,6 +18,10 @@ class CommandStartLink extends AbstractHandlerMessage {
 
     protected function handle(\TelegramBot\Api\Types\Message &$message): bool {
         
+        if (!canProcessCommand()) {
+            return true;
+        }
+        
         $m = [];
         preg_match("/^\/start\s+(\d+)-(\w+)$/i", $message->getText(), $m);
         
@@ -29,6 +33,7 @@ class CommandStartLink extends AbstractHandlerMessage {
             showPoll($poll->id, null);
         }
         
+        updateLastCommand();
         return true;
     }
 }

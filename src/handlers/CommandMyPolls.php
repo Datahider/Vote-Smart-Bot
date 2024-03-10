@@ -20,11 +20,16 @@ class CommandMyPolls extends AbstractHandlerMessage {
 
     protected function handle(\TelegramBot\Api\Types\Message &$message): bool {
 
+        if (!canProcessCommand()) {
+            return true;
+        }
+        
         $polls = new DBList(poll::class, 'admin = :admin ORDER BY id', ['admin' => Bot::$user->id]);
         
         $view = new BotView(Bot::$api, Bot::$chat->id, Bot::$language_code);
         $view->show('cmd_my_polls', null, ['polls' => $polls->asArray()]);
-
+        
+        updateLastCommand();
         return true;
     }
 }

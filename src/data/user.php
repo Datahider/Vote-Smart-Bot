@@ -10,6 +10,7 @@ class user extends DBObject {
         'tg_user' => 'BIGINT NOT NULL',
         'last_poll' => 'BIGINT',
         'last_poll_message' => 'BIGINT',
+        'last_command_timestamp' => 'BIGINT',
         'PRIMARY KEY' => 'tg_user'
     ];
 }

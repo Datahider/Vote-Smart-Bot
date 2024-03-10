@@ -19,9 +19,14 @@ class CommandStart extends AbstractHandlerMessage {
 
     protected function handle(\TelegramBot\Api\Types\Message &$message): bool {
 
+        if (!canProcessCommand()) {
+            return true;
+        }
+        
         $view = new BotView(Bot::$api, Bot::$chat->id, Bot::$language_code);
         $view->show('cmd_start');
 
+        updateLastCommand();
         return true;
     }
     

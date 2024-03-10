@@ -19,6 +19,10 @@ class CommandStartSelect extends AbstractHandlerMessage {
 
     protected function handle(\TelegramBot\Api\Types\Message &$message): bool {
         
+        if (!canProcessCommand()) {
+            return true;
+        }
+        
         $m = [];
         preg_match("/\/start s_(\d+)_(\d+)$/", $message->getText(), $m);
         $message_id = $m[1];
@@ -37,6 +41,7 @@ class CommandStartSelect extends AbstractHandlerMessage {
         }
         
         Bot::$api->deleteMessage(Bot::$chat->id, $message->getMessageId());
+        updateLastCommand();
         return true;
         
     }

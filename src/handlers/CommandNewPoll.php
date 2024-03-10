@@ -21,10 +21,15 @@ class CommandNewPoll extends AbstractHandlerMessage {
 
     protected function handle(\TelegramBot\Api\Types\Message &$message): bool {
         
+        if (!canProcessCommand()) {
+            return true;
+        }
+        
         $view = new BotView(Bot::$api, Bot::$chat->id);
         $view->show('cmd_new_poll', 'kbd_cancel');
         PriorityPollTitle::setPriority(null);
         
+        updateLastCommand();
         return true;
     }
 }

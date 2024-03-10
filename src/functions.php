@@ -133,3 +133,17 @@ function queueInlineUpdates($poll_id) {
     $sth->execute([$poll_id]);
     Bot::runAt(date_create_immutable(), InlineUpdater::class, '', false);
 }
+
+function canProcessCommand() {
+    $user = new user(['tg_user' => Bot::$user->id], true);
+    if ($user->isNew() || is_null($user->last_command_timestamp) || $user->last_command_timestamp > time()+1) {
+        return true;
+    }
+    return false;
+}
+
+function updateLastCommand() {
+    $user = new user(['tg_user' => Bot::$user->id], true);
+    $user->last_command_timestamp = time();
+    $user->write();
+}

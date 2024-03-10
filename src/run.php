@@ -29,8 +29,6 @@ use losthost\polabrain\data\inline_message;
 use losthost\polabrain\data\user;
 
 use losthost\telle\model\DBBotParam;
-use losthost\DB\DBList;
-use losthost\passg\Pass;
 
 require_once 'vendor/autoload.php';
 require_once 'src/functions.php';
@@ -46,10 +44,10 @@ user::initDataStructure();
 
 BotView::setTemplateDir('src/templates');
 
+Bot::addHandler(CommandNewPoll::class);
 Bot::addHandler(CommandStart::class);
 Bot::addHandler(CommandStartSelect::class);
 Bot::addHandler(CommandStartLink::class);
-Bot::addHandler(CommandNewPoll::class);
 Bot::addHandler(CommandMyPolls::class);
 Bot::addHandler(CommandPollId::class);
 Bot::addHandler(GeneralMessage::class);

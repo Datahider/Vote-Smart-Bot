@@ -20,6 +20,10 @@ class CommandPollId extends AbstractHandlerMessage {
 
     protected function handle(\TelegramBot\Api\Types\Message &$message): bool {
         
+        if (!canProcessCommand()) {
+            return true;
+        }
+        
         $m = [];
         
         if (preg_match("/^\/(\d+)$/", $message->getText(), $m)) {
@@ -32,6 +36,7 @@ class CommandPollId extends AbstractHandlerMessage {
             }
         }
         
+        updateLastCommand();
         return true;
     }
 }

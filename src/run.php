@@ -1,32 +1,32 @@
 <?php
 
 use losthost\telle\Bot;
-use losthost\patephon\handlers\CommandStart;
-use losthost\patephon\handlers\CommandStartSelect;
-use losthost\patephon\handlers\CommandStartLink;
-use losthost\patephon\handlers\CommandNewPoll;
-use losthost\patephon\handlers\CommandMyPolls;
-use losthost\patephon\handlers\CommandPollId;
-use losthost\patephon\handlers\GeneralMessage;
+use losthost\polabrain\handlers\CommandStart;
+use losthost\polabrain\handlers\CommandStartSelect;
+use losthost\polabrain\handlers\CommandStartLink;
+use losthost\polabrain\handlers\CommandNewPoll;
+use losthost\polabrain\handlers\CommandMyPolls;
+use losthost\polabrain\handlers\CommandPollId;
+use losthost\polabrain\handlers\GeneralMessage;
 
-use losthost\patephon\handlers\CallbackCancel;
-use losthost\patephon\handlers\CallbackVote;
-use losthost\patephon\handlers\CallbackDelete;
-use losthost\patephon\handlers\CallbackRefresh;
-use losthost\patephon\handlers\CallbackToggle;
-use losthost\patephon\handlers\CallbackStage;
-use losthost\patephon\handlers\CallbackAdd;
+use losthost\polabrain\handlers\CallbackCancel;
+use losthost\polabrain\handlers\CallbackVote;
+use losthost\polabrain\handlers\CallbackDelete;
+use losthost\polabrain\handlers\CallbackRefresh;
+use losthost\polabrain\handlers\CallbackToggle;
+use losthost\polabrain\handlers\CallbackStage;
+use losthost\polabrain\handlers\CallbackAdd;
 
-use losthost\patephon\handlers\InlineShare;
-use losthost\patephon\handlers\InlineResult;
+use losthost\polabrain\handlers\InlineShare;
+use losthost\polabrain\handlers\InlineResult;
 
 use losthost\BotView\BotView;
-use losthost\patephon\data\poll;
-use losthost\patephon\data\poll_item;
-use losthost\patephon\data\poll_vote;
-use losthost\patephon\data\poll_user;
-use losthost\patephon\data\inline_message;
-use losthost\patephon\data\user;
+use losthost\polabrain\data\poll;
+use losthost\polabrain\data\poll_item;
+use losthost\polabrain\data\poll_vote;
+use losthost\polabrain\data\poll_user;
+use losthost\polabrain\data\inline_message;
+use losthost\polabrain\data\user;
 
 use losthost\telle\model\DBBotParam;
 use losthost\DB\DBList;

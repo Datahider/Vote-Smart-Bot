@@ -1,10 +1,10 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerMessage;
 use losthost\telle\Bot;
-use losthost\patephon\data\poll;
+use losthost\polabrain\data\poll;
 use losthost\BotView\BotView;
 
 class CommandPollId extends AbstractHandlerMessage {

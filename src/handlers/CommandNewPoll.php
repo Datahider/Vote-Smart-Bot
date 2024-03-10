@@ -1,9 +1,9 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerMessage;
-use losthost\patephon\handlers\PriorityPollTitle;
+use losthost\polabrain\handlers\PriorityPollTitle;
 use losthost\BotView\BotView;
 use losthost\telle\Bot;
 

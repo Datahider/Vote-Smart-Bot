@@ -1,9 +1,9 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerCallback;
-use losthost\patephon\data\poll;
+use losthost\polabrain\data\poll;
 use losthost\telle\Bot;
 
 class CallbackToggle extends AbstractHandlerCallback {

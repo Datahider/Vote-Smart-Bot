@@ -1,6 +1,6 @@
 {
-    "name": "losthost/patephon-bot",
-    "description": "Description of project Patephon Bot.",
+    "name": "losthost/polabrain",
+    "description": "A Telegram bot for smart polls and brainstorms",
     "authors": [
         {
             "name": "drweb",
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "losthost\\patephon\\": "src/"
+            "losthost\\polabrain\\": "src/"
         }
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerMessage;
 use losthost\telle\Bot;
 use losthost\BotView\BotView;
-use losthost\patephon\data\user;
-use losthost\patephon\data\poll;
-use losthost\patephon\service\MessageDeleter;
-use losthost\patephon\data\poll_item;
+use losthost\polabrain\data\user;
+use losthost\polabrain\data\poll;
+use losthost\polabrain\service\MessageDeleter;
+use losthost\polabrain\data\poll_item;
 
 class GeneralMessage extends AbstractHandlerMessage {
     

@@ -1,6 +1,6 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerCallback;
 use losthost\BotView\BotView;

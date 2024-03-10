@@ -1,11 +1,11 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerCallback;
-use losthost\patephon\data\poll_item;
-use losthost\patephon\data\poll;
-use losthost\patephon\data\poll_vote;
+use losthost\polabrain\data\poll_item;
+use losthost\polabrain\data\poll;
+use losthost\polabrain\data\poll_vote;
 use losthost\telle\Bot;
 use losthost\DB\DBView;
 

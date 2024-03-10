@@ -1,9 +1,9 @@
 <?php
 
-namespace losthost\patephon\data;
+namespace losthost\polabrain\data;
 
 use losthost\DB\DBObject;
-use losthost\patephon\data\poll_user;
+use losthost\polabrain\data\poll_user;
 use losthost\DB\DBView;
 use losthost\DB\DB;
 

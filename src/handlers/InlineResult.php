@@ -1,9 +1,9 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerChosenInlineResult;
-use losthost\patephon\data\inline_message;
+use losthost\polabrain\data\inline_message;
 
 class InlineResult extends AbstractHandlerChosenInlineResult {
     

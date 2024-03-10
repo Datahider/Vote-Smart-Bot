@@ -1,12 +1,12 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerCallback;
-use losthost\patephon\data\poll;
+use losthost\polabrain\data\poll;
 use losthost\telle\Bot;
 use losthost\BotView\BotView;
-use losthost\patephon\handlers\PriorityPollItems;
+use losthost\polabrain\handlers\PriorityPollItems;
 
 class CallbackAdd extends AbstractHandlerCallback {
     

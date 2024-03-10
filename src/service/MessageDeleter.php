@@ -1,6 +1,6 @@
 <?php
 
-namespace losthost\patephon\service;
+namespace losthost\polabrain\service;
 
 use losthost\telle\abst\AbstractBackgroundProcess;
 use losthost\telle\Bot;

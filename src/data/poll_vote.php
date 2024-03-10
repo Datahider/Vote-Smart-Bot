@@ -1,6 +1,6 @@
 <?php
 
-namespace losthost\patephon\data;
+namespace losthost\polabrain\data;
 
 use losthost\DB\DBObject;
 

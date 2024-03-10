@@ -1,11 +1,11 @@
 <?php
 
-namespace losthost\patephon\service;
+namespace losthost\polabrain\service;
 
 use losthost\telle\abst\AbstractBackgroundProcess;
 use losthost\DB\DBList;
-use losthost\patephon\data\inline_message;
-use losthost\patephon\data\poll;
+use losthost\polabrain\data\inline_message;
+use losthost\polabrain\data\poll;
 use losthost\telle\Bot;
 use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 

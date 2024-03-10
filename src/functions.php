@@ -1,15 +1,15 @@
 <?php
 
-use losthost\patephon\data\name;
+use losthost\polabrain\data\name;
 use losthost\DB\DBView;
 use losthost\BotView\BotView;
 use losthost\telle\Bot;
-use losthost\patephon\data\poll;
+use losthost\polabrain\data\poll;
 use losthost\templateHelper\Template;
 use losthost\DB\DB;
 use losthost\telle\model\DBPendingJob;
-use losthost\patephon\service\InlineUpdater;
-use losthost\patephon\data\user;
+use losthost\polabrain\service\InlineUpdater;
+use losthost\polabrain\data\user;
 
 function __($string, $language_code=null) {
     if (is_null($language_code)) { 

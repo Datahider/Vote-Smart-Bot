@@ -1,13 +1,13 @@
 <?php
 
-namespace losthost\patephon\handlers;
+namespace losthost\polabrain\handlers;
 
 use losthost\telle\abst\AbstractHandlerInlineQuery;
 use losthost\telle\Bot;
 use TelegramBot\Api\Types\Inline\QueryResult\Article;
 use TelegramBot\Api\Types\Inline\InputMessageContent\Text;
 use losthost\DB\DBList;
-use losthost\patephon\data\poll;
+use losthost\polabrain\data\poll;
 use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 
 class InlineShare extends AbstractHandlerInlineQuery {

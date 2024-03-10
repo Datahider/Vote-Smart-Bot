@@ -1,6 +1,8 @@
 <b><?=$poll->title;?></b>
 
 <?php 
+use losthost\telle\Bot;
+
 if ($poll->stage == 'created') : ?>
 Это голосование ещё не началось. 
 
@@ -27,6 +29,9 @@ if ($poll->stage == 'created') : ?>
 <?php endif; 
 
 if (count($poll_results)) {
+
+    $bot_username = Bot::param("bot_username", null);
+    
     foreach ($poll_results as $result) {
 
         if ($poll->stage == 'voting' || $poll->stage == 'end') {
@@ -40,7 +45,7 @@ if (count($poll_results)) {
         } elseif ($message_id == 0 || $poll->stage != 'voting') {
             echo "$result[icon] - $result[title]$rating\n";
         } else {
-            echo "$result[icon] - <a href='t.me/votesmart_bot?start=select_{$message_id}_$result[id]'>$result[title]</a>$rating\n";
+            echo "$result[icon] - <a href='t.me/$bot_username?start=s_{$message_id}_$result[id]'>$result[title]</a>$rating\n";
         }
     }
 }

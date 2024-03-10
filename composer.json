@@ -12,7 +12,8 @@
         "losthost/telle": "dev-master",
         "losthost/bot-view": "^2",
         "losthost/db": "^3",
-        "ramsey/uuid": "4.7.5"
+        "ramsey/uuid": "4.7.5",
+        "losthost/passg": "v1.1.0"
     },
     "autoload": {
         "psr-4": {

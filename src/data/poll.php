@@ -12,6 +12,7 @@ class poll extends DBObject {
     const METADATA = [
         'id' => 'BIGINT NOT NULL AUTO_INCREMENT',
         'title' => 'VARCHAR(64) NOT NULL',
+        'secret' => 'VARCHAR(32) NOT NULL DEFAULT ""',
         'admin' => 'BIGINT NOT NULL',
         'language_code' => 'VARCHAR(10) NOT NULL DEFAULT "ru"',
         'max_rating' => 'INT NOT NULL',
@@ -59,5 +60,9 @@ class poll extends DBObject {
         if ($commit) {
             DB::commit();
         }
+    }
+
+    public function getLink() {
+        return "$this->id-$this->secret";
     }
 }

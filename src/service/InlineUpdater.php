@@ -31,6 +31,7 @@ class InlineUpdater extends AbstractBackgroundProcess {
     
     protected function doUpdate() {
         $inline_list = new DBList(inline_message::class, ['needs_update' => 1]);
+        $bot_username = Bot::param("bot_username", null);
         
         $texts = [];
         
@@ -45,7 +46,7 @@ class InlineUpdater extends AbstractBackgroundProcess {
 
             $text = getPollSharingText($poll);
             $keyboard = new InlineKeyboardMarkup([
-                [['text' => __('Take a part', $poll->language_code), 'url' => "t.me/votesmart_bot?start=$poll->id"]]
+                [['text' => __('Take a part', $poll->language_code), 'url' => "t.me/$bot_username?start=$poll->id"]]
             ]);
 
             try {

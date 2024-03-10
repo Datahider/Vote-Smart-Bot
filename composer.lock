@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a34478051b4509016091fe8427d05168",
+    "content-hash": "6ccd04e2014b2e7b7608cf16372df9a9",
     "packages": [
         {
             "name": "brick/math",
@@ -213,6 +213,46 @@
                 "source": "https://github.com/Datahider/DB/tree/v3.0.10-beta"
             },
             "time": "2024-02-11T15:31:52+00:00"
+        },
+        {
+            "name": "losthost/passg",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Datahider/passg.git",
+                "reference": "a4dade9463c74b2ea341ede6c04dd700e1c57cf7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Datahider/passg/zipball/a4dade9463c74b2ea341ede6c04dd700e1c57cf7",
+                "reference": "a4dade9463c74b2ea341ede6c04dd700e1c57cf7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "10.3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "losthost\\passg\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Datahider",
+                    "email": "pio@pio.su"
+                }
+            ],
+            "description": "A simple and useful password generator that can generate passwords of different symbol classes",
+            "support": {
+                "issues": "https://github.com/Datahider/passg/issues",
+                "source": "https://github.com/Datahider/passg/tree/v1.1.0"
+            },
+            "time": "2023-09-30T18:07:28+00:00"
         },
         {
             "name": "losthost/telle",
